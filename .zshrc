@@ -3,17 +3,26 @@
 source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-eval "$(starship init zsh)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-eval $(thefuck --alias)
-# You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
+zstyle ':autocomplete:*' min-input 3
+# Note: -e lets you specify a dynamically generated value.
+
+# Override default for all listings
+# $LINES is the number of lines that fit on screen.
+zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
+
+# Override for recent path search only
+zstyle ':autocomplete:recent-paths:*' list-lines 10
+
+# Override for history search only
+zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+
+# Override for history menu only
+zstyle ':autocomplete:history-search-backward:*' list-lines 2000
 
 # Aliases and functions
 alias ..="cd .."
@@ -22,6 +31,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
 alias dev="cd ~/Development"
+
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 alias brew="arch -arm64 brew"
 
@@ -64,3 +75,7 @@ function startDrupal() {
 }
 
 export PATH=$PATH:/Users/aidan.wickes/.spicetify
+
+eval "$(starship init zsh)"
+
+eval $(thefuck --alias)
