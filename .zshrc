@@ -25,6 +25,7 @@ zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
 zstyle ':autocomplete:history-search-backward:*' list-lines 2000
 
 # Aliases and functions
+# cd
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -32,13 +33,17 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 alias dev="cd ~/Development"
 
+# ls
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
+# Homebrew
 alias brew="arch -arm64 brew"
 
+# Docker
 alias dc="docker-compose"
 alias dr="docker-remote"
 
+# Git
 alias gpo="git pull origin"
 alias gc="git checkout"
 alias gcb="git checkout -b"
@@ -51,6 +56,9 @@ alias rathbones="cd ~/Development/work-projects/rathbones-v2"
 alias alphera="cd ~/Development/work-projects/alphera-v2"
 alias oc="cd ~/Development/work-projects/osborne-clarke"
 alias pidsa="cd ~/Development/work-projects/pidsa-drupal"
+
+# Misc
+alias neofetch="zeitfetch"
 
 # Restart local-dev-environment
 function lde() {
