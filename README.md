@@ -18,6 +18,14 @@ brew install git
 brew install stow
 ```
 
+### Alias Dependencies
+
+You can either install these to use all commands in the zshrc file but it is not required
+
+```
+brew install eza zeitfetch lazygit
+```
+
 ## Installation
 
 First, check out the dotfiles repo in your $HOME directory using git
