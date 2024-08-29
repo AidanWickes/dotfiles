@@ -28,7 +28,7 @@ brew install stow
 You can either install these to use all commands in the zshrc file but it is not required
 
 ```
-brew install eza zeitfetch lazygit
+brew install eza zeitfetch lazygit thefuck
 ```
 
 ## Installation
