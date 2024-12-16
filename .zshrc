@@ -40,7 +40,7 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 alias brew="arch -arm64 brew"
 
 # Docker
-alias dc="docker-compose"
+alias dc="docker compose"
 alias dr="docker-remote"
 
 # Git
@@ -49,6 +49,7 @@ alias gc="git checkout"
 alias gcb="git checkout -b"
 alias gcm="git checkout master"
 alias gs="git status"
+alias gn="git reset --hard HEAD && git clean -fd"
 
 # Project aliases
 alias ukho="cd ~/Development/work-projects/ukho-admiralty"
@@ -84,8 +85,8 @@ function lde() {
 
 # Restart docker container
 function restartDocker() {
-	docker-compose down
-	docker-compose up -d
+	docker compose down
+	docker compose up -d
 }
 
 # Start Drupal Site
@@ -93,6 +94,16 @@ function startDrupal() {
 	docker-composer install
 	docker-drush --uri=$1 cr
 	docker-drush --uri=$1 cim -y
+}
+
+# Start Site Studio
+function importSiteStudio() {
+	print target environment: @$1.$2
+	docker-drush @$1.$2 cr
+	docker-drush @$1.$2 cohesion:import
+	docker-drush @$1.$2 cim $3
+	docker-drush @$1.$2 sitestudio:package:import --diff $3
+	docker-drush @$1.$2 cohesion:rebuild
 }
 
 export PATH=$PATH:/Users/aidan.wickes/.spicetify
