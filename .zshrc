@@ -52,11 +52,6 @@ alias gs="git status"
 alias gn="git reset --hard HEAD && git clean -fd"
 
 # Project aliases
-alias ukho="cd ~/Development/work-projects/ukho-admiralty"
-alias rathbones="cd ~/Development/work-projects/rathbones-v2"
-alias alphera="cd ~/Development/work-projects/alphera-v2"
-alias oc="cd ~/Development/work-projects/osborne-clarke"
-alias pidsa="cd ~/Development/work-projects/pidsa-drupal"
 
 # Misc
 alias neofetch="zeitfetch"
@@ -72,38 +67,6 @@ function lg() {
             cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
             rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
     fi
-}
-
-# Restart local-dev-environment
-function lde() {
-	cd ~/Development/local-dev-environment
-	./stop
-	git pull
-	./start
-	cd ~
-}
-
-# Restart docker container
-function restartDocker() {
-	docker compose down
-	docker compose up -d
-}
-
-# Start Drupal Site
-function startDrupal() {
-	docker-composer install
-	docker-drush --uri=$1 cr
-	docker-drush --uri=$1 cim -y
-}
-
-# Start Site Studio
-function importSiteStudio() {
-	print target environment: @$1.$2
-	docker-drush @$1.$2 cr
-	docker-drush @$1.$2 cohesion:import
-	docker-drush @$1.$2 cim $3
-	docker-drush @$1.$2 sitestudio:package:import --diff $3
-	docker-drush @$1.$2 cohesion:rebuild
 }
 
 export PATH=$PATH:/Users/aidan.wickes/.spicetify
