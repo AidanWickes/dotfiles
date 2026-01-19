@@ -3,11 +3,6 @@
 source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 zstyle ':autocomplete:*' min-input 3
 # Note: -e lets you specify a dynamically generated value.
 
@@ -68,8 +63,6 @@ function lg() {
             rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
     fi
 }
-
-export PATH=$PATH:/Users/aidan.wickes/.spicetify
 
 eval "$(starship init zsh)"
 
