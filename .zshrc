@@ -26,13 +26,14 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
-alias dev="cd ~/Development"
+alias dev="cd ~/Developer"
 
 # ls
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # Homebrew
 alias brew="arch -arm64 brew"
+alias update="brew update && brew upgrade && brew cleanup"
 
 # Docker
 alias dc="docker compose"
@@ -42,7 +43,7 @@ alias dr="docker-remote"
 alias gpo="git pull origin"
 alias gc="git checkout"
 alias gcb="git checkout -b"
-alias gcm="git checkout master"
+alias gcm="git checkout main"
 alias gs="git status"
 alias gn="git reset --hard HEAD && git clean -fd"
 
@@ -67,3 +68,7 @@ function lg() {
 eval "$(starship init zsh)"
 
 eval $(thefuck --alias)
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export BASH_MAX_OUTPUT_LENGTH=15000
